@@ -5,10 +5,35 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <LinearLayout
+            android:id="@+id/layoutSearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:textColor="#888"
+                android:text="Search "/>
+
+            <EditText
+                android:id="@+id/etSearch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#888"
+                android:hint="Input word to search"/>
+
+        </LinearLayout>
+
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rvSchool"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_below="@+id/layoutSearch"
             android:scrollbars="vertical">
         </android.support.v7.widget.RecyclerView>
 

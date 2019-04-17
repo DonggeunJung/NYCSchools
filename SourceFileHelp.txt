@@ -62,5 +62,12 @@ Project description : Android sample project shows School data list and SAT scor
   Retrofit Unit test.
   When the response has particular data, the result is correct.
 
+# Source code download address
+ = GitHub
+https://github.com/DonggeunJung/NYCSchools
 
+ = Google drive
+https://drive.google.com/file/d/1MxOOvF9jRkvZrt6YTTZeQZN1IumlZntN/view?usp=sharing
 
+ = GitLab
+https://gitlab.com/DonggeunJung/NYCSchools

@@ -18,6 +18,28 @@ public class NycSchool {
         this.school_email = school_email;
     }
 
+    // Search particular word in School name
+    public boolean searchName(String strSearch) {
+        // When school name does not exist return false
+        if( school_name == null || school_name.length() < 1 )
+            return false;
+
+        // When search word is too short return true
+        strSearch = strSearch.trim();
+        if( strSearch.length() < 2 )
+            return true;
+
+        // Change both String to Lower case characters
+        strSearch = strSearch.toLowerCase();
+        String strName = school_name.toLowerCase();
+
+        // When search word is included in School name, return true
+        if( strName.indexOf(strSearch) >= 0 )
+            return true;
+
+        return false;
+    }
+
     // Return DBN(Key of school)
     public String getDbn() {
         return dbn;
