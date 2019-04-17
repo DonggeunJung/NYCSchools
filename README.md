@@ -1,9 +1,13 @@
 # NYCSchools
 
 [Image1 : List fragment on phone]
+
 [Image2 : Detail fragment on phone]
+
 [Image3 : Both fragment on tablet-1]
+
 [Image4 : Both fragment on tablet-2]
+
 
 <div>
 <img src="https://github.com/DonggeunJung/NYCSchools/blob/master/NYCSchools_Capture01.png?raw=true width="400px"></img>
