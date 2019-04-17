@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable name="index" type="int"/>
+        <variable name="viewModel" type="com.donggeunjung.nycschools.viewmodel.DataViewModel"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dip"
+        android:orientation="vertical"
+        android:paddingLeft="8dip"
+        android:background="#888"
+        android:tag="@{Integer.toString(index)}">
+
+        <TextView
+            android:id="@+id/tvSchoolName"
+            android:layout_width="match_parent"
+            android:layout_weight="3"
+            android:layout_height="0dp"
+            android:gravity="center_vertical|left"
+            android:textSize="17sp"
+            android:textColor="#fff"
+            android:text="@{viewModel.listSchools[index].school_name}"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_weight="3"
+            android:layout_height="0dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|left"
+                android:textSize="14sp"
+                android:textColor="#333"
+                android:text="Tel "/>
+
+            <TextView
+                android:id="@+id/tvPhoneNumber"
+                android:layout_width="0dp"
+                android:layout_weight="3"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|left"
+                android:textSize="14sp"
+                android:textColor="#000"
+                android:text="@{viewModel.listSchools[index].phone_number}"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|left"
+                android:textSize="14sp"
+                android:textColor="#333"
+                android:text="eMail "/>
+
+            <TextView
+                android:id="@+id/tvSchoolEmail"
+                android:layout_width="0dp"
+                android:layout_weight="6.5"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|left"
+                android:textSize="14sp"
+                android:textColor="#000"
+                android:text="@{viewModel.listSchools[index].school_email}"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</layout>

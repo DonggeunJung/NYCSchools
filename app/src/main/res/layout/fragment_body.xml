@@ -1,0 +1,446 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable name="viewModel" type="com.donggeunjung.nycschools.viewmodel.DataViewModel"/>
+    </data>
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:background="#DDD"
+            android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/tvSchoolName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:textSize="20sp"
+            android:textColor="#000"
+            android:text="@{viewModel.nycSchool.school_name}"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|left"
+                android:textSize="14sp"
+                android:textColor="#aaa"
+                android:text="Tel "/>
+
+            <TextView
+                android:id="@+id/tvPhoneNumber"
+                android:layout_width="0dp"
+                android:layout_weight="3"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|left"
+                android:textSize="14sp"
+                android:textColor="#000"
+                android:text="@{viewModel.nycSchool.phone_number}"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|left"
+                android:textSize="14sp"
+                android:textColor="#aaa"
+                android:text="Fax number "/>
+
+            <TextView
+                android:id="@+id/tvFaxNumber"
+                android:layout_width="0dp"
+                android:layout_weight="6.5"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|left"
+                android:textSize="14sp"
+                android:textColor="#000"
+                android:text="@{viewModel.schoolDetail.fax_number}"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|left"
+                android:textSize="14sp"
+                android:textColor="#aaa"
+                android:text="City "/>
+
+            <TextView
+                android:id="@+id/tvCity"
+                android:layout_width="0dp"
+                android:layout_weight="6.5"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|left"
+                android:textSize="14sp"
+                android:textColor="#000"
+                android:text="@{viewModel.schoolDetail.city}"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|left"
+                android:textSize="14sp"
+                android:textColor="#aaa"
+                android:text="State Code "/>
+
+            <TextView
+                android:id="@+id/tvStateCode"
+                android:layout_width="0dp"
+                android:layout_weight="4"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|left"
+                android:textSize="14sp"
+                android:textColor="#000"
+                android:text="@{viewModel.schoolDetail.state_code}"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|left"
+                android:textSize="14sp"
+                android:textColor="#aaa"
+                android:text="Zip "/>
+
+            <TextView
+                android:id="@+id/tvZip"
+                android:layout_width="0dp"
+                android:layout_weight="6"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|left"
+                android:textSize="14sp"
+                android:textColor="#000"
+                android:text="@{viewModel.schoolDetail.zip}"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|left"
+                android:textSize="14sp"
+                android:textColor="#aaa"
+                android:text="Location "/>
+
+            <TextView
+                android:id="@+id/tvLocation"
+                android:layout_width="0dp"
+                android:layout_weight="6.5"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|left"
+                android:textSize="14sp"
+                android:textColor="#000"
+                android:text="@{viewModel.schoolDetail.location}"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|left"
+                android:textSize="14sp"
+                android:textColor="#aaa"
+                android:text="Website "/>
+
+            <TextView
+                android:id="@+id/tvWebsite"
+                android:layout_width="0dp"
+                android:layout_weight="6.5"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|left"
+                android:textSize="14sp"
+                android:textColor="#000"
+                android:text="@{viewModel.schoolDetail.website}"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|left"
+                android:textSize="14sp"
+                android:textColor="#aaa"
+                android:text="Subway "/>
+
+            <TextView
+                android:id="@+id/tvSubway"
+                android:layout_width="0dp"
+                android:layout_weight="6.5"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|left"
+                android:textSize="14sp"
+                android:textColor="#000"
+                android:text="@{viewModel.schoolDetail.subway}"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|left"
+                android:textSize="14sp"
+                android:textColor="#aaa"
+                android:text="Bus "/>
+
+            <TextView
+                android:id="@+id/tvBus"
+                android:layout_width="0dp"
+                android:layout_weight="6.5"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|left"
+                android:textSize="14sp"
+                android:textColor="#000"
+                android:text="@{viewModel.schoolDetail.bus}"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|left"
+                android:textSize="14sp"
+                android:textColor="#aaa"
+                android:text="Total Students "/>
+
+            <TextView
+                android:id="@+id/tvTotalStudents"
+                android:layout_width="0dp"
+                android:layout_weight="6.5"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|left"
+                android:textSize="14sp"
+                android:textColor="#000"
+                android:text="@{viewModel.schoolDetail.total_students}"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|left"
+                android:textSize="14sp"
+                android:textColor="#aaa"
+                android:text="eMail "/>
+
+            <TextView
+                android:id="@+id/tvSchoolEmail"
+                android:layout_width="0dp"
+                android:layout_weight="6.5"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|left"
+                android:textSize="14sp"
+                android:textColor="#000"
+                android:text="@{viewModel.nycSchool.school_email}"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|left"
+                android:textSize="14sp"
+                android:textColor="#aaa"
+                android:text="Num of SAT Test Takers "/>
+
+            <TextView
+                android:id="@+id/tvNumSatTakers"
+                android:layout_width="0dp"
+                android:layout_weight="6.5"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|left"
+                android:textSize="14sp"
+                android:textColor="#000"
+                android:text="@{viewModel.schoolScore.num_of_sat_test_takers}"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|left"
+                android:textSize="14sp"
+                android:textColor="#aaa"
+                android:text="SAT Critical Reading Avg. Score "/>
+
+            <TextView
+                android:id="@+id/tvReadingScore"
+                android:layout_width="0dp"
+                android:layout_weight="6.5"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|left"
+                android:textSize="14sp"
+                android:textColor="#000"
+                android:text="@{viewModel.schoolScore.sat_critical_reading_avg_score}"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|left"
+                android:textSize="14sp"
+                android:textColor="#aaa"
+                android:text="SAT Math Avg. Score "/>
+
+            <TextView
+                android:id="@+id/tvMathScore"
+                android:layout_width="0dp"
+                android:layout_weight="6.5"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|left"
+                android:textSize="14sp"
+                android:textColor="#000"
+                android:text="@{viewModel.schoolScore.sat_math_avg_score}"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|left"
+                android:textSize="14sp"
+                android:textColor="#aaa"
+                android:text="SAT Writing Avg. Score "/>
+
+            <TextView
+                android:id="@+id/tvWritingScore"
+                android:layout_width="0dp"
+                android:layout_weight="6.5"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|left"
+                android:textSize="14sp"
+                android:textColor="#000"
+                android:text="@{viewModel.schoolScore.sat_writing_avg_score}"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|left"
+                android:textSize="14sp"
+                android:textColor="#aaa"
+                android:text="Overview Paragraph "/>
+
+            <TextView
+                android:id="@+id/tvOverviewParagraph"
+                android:layout_width="0dp"
+                android:layout_weight="6.5"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|left"
+                android:textSize="14sp"
+                android:textColor="#000"
+                android:text="@{viewModel.schoolDetail.overview_paragraph}"/>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>
+
+</layout>

@@ -1,0 +1,66 @@
+/*
+* NYCSchools : Get school information list from server and display on RecyclerView.
+* Author : DONGGEUN JUNG (Dennis)
+* Date : Apr.16.2019
+*/
+Project URL : https://gitlab.com/DonggeunJung/NycSchools
+Project slug : Shows School data list and SAT score. Using Retrofit API
+Project description : Android sample project shows School data list and SAT score. Using Retrofit API, DataBinding, LiveData, Dagger, and Fragment.
+
+# /java/<packagename>/view/BaseActivity.java : 
+  Super class of activitys
+
+# /java/<packagename>/view/MainActivity.java : 
+  Main activity class. Load 2 fragments
+
+# /java/<packagename>/view/BodyFragment.java : 
+  Detail infomation fragment source file
+
+# /java/<packagename>/view/ListFragment.java : 
+  School list fragment source file
+
+# /java/<packagename>/view/RvAdapter.java :
+  RecyclerView adapter class
+
+# /java/<packagename>/viewmodel/ApiComponent.java :
+  Dagger interface for Retrofit object injection
+
+# /java/<packagename>/viewmodel/ApiComponent.java :
+  Dagger class for Retrofit object injection
+
+# /java/<packagename>/viewmodel/DataViewModel.java :
+  ViewModel class. Manage data & request to server
+
+# /java/<packagename>/model/ApiNyc.java :
+  Retrofit API interface
+
+# /java/<packagename>/model/NycSchool.java :
+  School simple data class
+
+# /java/<packagename>/model/SchoolDetail.java :
+  School detail data class
+
+# /java/<packagename>/model/SchoolScore.java :
+  SAT score data class
+
+# /res/layout/activity_main.xml :
+  Main activity layout file for Phone.
+
+# /res/layout-sw600dp/activity_main.xml :
+  Main activity layout file for Tablet.
+
+# /res/layout/fragment_list.xml :
+  List fragment layout file.
+
+# /res/layout/fragment_body.xml :
+  Detail infomation fragment layout file.
+
+# /res/layout/school_item.xml :
+  RecyclerView custom item layout file.
+
+# /test/java/<packagename>/RetrofitTest.java : 
+  Retrofit Unit test.
+  When the response has particular data, the result is correct.
+
+
+
