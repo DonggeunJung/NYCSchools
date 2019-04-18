@@ -3,6 +3,7 @@ package com.donggeunjung.nycschools.view;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -72,6 +73,7 @@ public class ListFragment extends Fragment {
         return v;
     }
 
+    // Text changing listener of Search EditText
     TextWatcher mSearchTextWatcher = new TextWatcher() {
         // When input text changing
         @Override
@@ -105,6 +107,9 @@ public class ListFragment extends Fragment {
         mBinding.rvSchool.setAdapter( rvAdapter );
         mBinding.rvSchool.setLayoutManager(new LinearLayoutManager(getContext(),
                 LinearLayoutManager.VERTICAL, false));
+        // Show Item Divider on RecyclerView
+        mBinding.rvSchool.addItemDecoration(new DividerItemDecoration(getContext(), 1));
+
         // Request School list to server
         if( loadData )
             mViewModel.getSchoolList();
