@@ -79,8 +79,8 @@ public class DataViewModel extends ViewModel {
     //===============================================
 
     // Request school data list to server
-    public void getSchools() {
-        Call<ArrayList<SchoolSimple>> call = mApi.getSchools();
+    public void getSchoolList() {
+        Call<ArrayList<SchoolSimple>> call = mApi.getSchoolList();
         call.enqueue(new Callback<ArrayList<SchoolSimple>>() {
 
             @Override
@@ -131,8 +131,8 @@ public class DataViewModel extends ViewModel {
     }
 
     // Request SAT score data to server
-    public void getScore(String dbn) {
-        Call<ArrayList<SchoolScore>> call = mApi.getScore(dbn);
+    public void getSchoolScore(String dbn) {
+        Call<ArrayList<SchoolScore>> call = mApi.getSchoolScore(dbn);
         call.enqueue(new Callback<ArrayList<SchoolScore>>() {
 
             @Override

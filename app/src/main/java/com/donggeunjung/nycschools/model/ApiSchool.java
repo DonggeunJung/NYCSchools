@@ -28,7 +28,7 @@ public interface ApiSchool {
 
     // Request school data list
     @GET("s3k6-pzi2.json")
-    Call<ArrayList<SchoolSimple>> getSchools();
+    Call<ArrayList<SchoolSimple>> getSchoolList();
 
     // Request particular school data
     @GET("s3k6-pzi2.json")
@@ -36,6 +36,6 @@ public interface ApiSchool {
 
     // Request SAT score data
     @GET("f9bf-2cp4.json")
-    Call<ArrayList<SchoolScore>> getScore(@Query("dbn") String dbn);
+    Call<ArrayList<SchoolScore>> getSchoolScore(@Query("dbn") String dbn);
 
 }

@@ -26,7 +26,7 @@ public class ListFragment extends Fragment {
     FragmentListBinding mBinding;
     View.OnClickListener mListener;
     DataViewModel mViewModel;
-    RvAdapter rvAdapter;
+    SchoolRVAdapter rvAdapter;
 
     // Make self fragment object and return
     public static ListFragment makeObj() {
@@ -101,12 +101,12 @@ public class ListFragment extends Fragment {
     // Init RecyclerView adapter & Request School list to server
     protected void initData(boolean loadData) {
         // Init RecyclerView adapter
-        rvAdapter = new RvAdapter(mViewModel, mListener, this);
+        rvAdapter = new SchoolRVAdapter(mViewModel, mListener, this);
         mBinding.rvSchool.setAdapter( rvAdapter );
         mBinding.rvSchool.setLayoutManager(new LinearLayoutManager(getContext(),
                 LinearLayoutManager.VERTICAL, false));
         // Request School list to server
         if( loadData )
-            mViewModel.getSchools();
+            mViewModel.getSchoolList();
     }
 }

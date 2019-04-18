@@ -5,31 +5,31 @@ import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.donggeunjung.nycschools.model.SchoolSimple;
-import com.donggeunjung.nycschools.viewmodel.DataViewModel;
 import com.donggeunjung.nycschools.R;
 import com.donggeunjung.nycschools.databinding.SchoolItemBinding;
+import com.donggeunjung.nycschools.model.SchoolSimple;
+import com.donggeunjung.nycschools.viewmodel.DataViewModel;
 
 import java.util.ArrayList;
+
 /*
- * RvAdapter.java : RecyclerView adapter class
+ * SchoolRVAdapter.java : RecyclerView adapter class
  * Author : DONGGEUN JUNG (Dennis)
  * Date : Apr.16.2019
  */
-public class RvAdapter extends RecyclerView.Adapter<RvAdapter.ViewHolder> {
+public class SchoolRVAdapter extends RecyclerView.Adapter<SchoolRVAdapter.ViewHolder> {
     private DataViewModel mViewModel;
     View.OnClickListener listener;
     Fragment mParent;
-    RecyclerView.Adapter<RvAdapter.ViewHolder> mAdapter;
+    RecyclerView.Adapter<SchoolRVAdapter.ViewHolder> mAdapter;
 
     // Constructor
-    public RvAdapter(DataViewModel viewModel, View.OnClickListener listener,
+    public SchoolRVAdapter(DataViewModel viewModel, View.OnClickListener listener,
                      Fragment parent) {
         // Save ViewModel, event listener, fragment objects to member variable
         this.mViewModel = viewModel;
@@ -51,7 +51,7 @@ public class RvAdapter extends RecyclerView.Adapter<RvAdapter.ViewHolder> {
 
     // Make ViewHolder & View binding object
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
+    public SchoolRVAdapter.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         // Get the view binding object of custom list item layout
         LayoutInflater inflater = (LayoutInflater)mParent.getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         SchoolItemBinding binding = DataBindingUtil.inflate(inflater,
@@ -63,7 +63,7 @@ public class RvAdapter extends RecyclerView.Adapter<RvAdapter.ViewHolder> {
 
         // Make ViewHolder object
         View view = binding.getRoot();
-        ViewHolder vh = new ViewHolder(view);
+        SchoolRVAdapter.ViewHolder vh = new SchoolRVAdapter.ViewHolder(view);
         // Set binding object to ViewHolder object
         vh.binding = binding;
         // Set click event listener to ViewHolder object
@@ -73,7 +73,7 @@ public class RvAdapter extends RecyclerView.Adapter<RvAdapter.ViewHolder> {
 
     // When ViewHolder is binded set data to binding object
     @Override
-    public void onBindViewHolder(ViewHolder viewHolder, int position) {
+    public void onBindViewHolder(SchoolRVAdapter.ViewHolder viewHolder, int position) {
         // Set item index number to binding object
         viewHolder.binding.setIndex(position);
     }

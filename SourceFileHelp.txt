@@ -1,9 +1,9 @@
 /*
 * NYCSchools : Get school information list from server and display on RecyclerView.
 * Author : DONGGEUN JUNG (Dennis)
-* Date : Apr.16.2019
+* Date : Apr.17.2019
 */
-# Project URL : https://gitlab.com/DonggeunJung/NycSchools
+# Project URL : https://github.com/DonggeunJung/NYCSchools
 # Project slug : Shows School data list and SAT score. Using Retrofit API
 # Project description : Android sample project shows School data list and SAT score. Using Retrofit API, DataBinding, LiveData, Dagger, and Fragment.
 
@@ -22,7 +22,7 @@
 # /java/<packagename>/view/ListFragment.java : 
   School list fragment source file
 
-# /java/<packagename>/view/RvAdapter.java :
+# /java/<packagename>/view/SchoolRVAdapter.java :
   RecyclerView adapter class
 
 # /java/<packagename>/viewmodel/ApiComponent.java :
@@ -68,9 +68,20 @@
 # /res/layout/school_item.xml :
   RecyclerView custom item layout file.
 
-# /test/java/<packagename>/RetrofitTest.java : 
-  Retrofit Unit test.
+
+[Unit test source files]==========================================
+
+# /test/java/<packagename>/GetSchoolListTest.java :
+  Retrofit Unit test. Get all School simple data list
+  When the response has over 100 items of data, the result is correct.
+
+# /test/java/<packagename>/GetSchoolDetailTest.java :
+  Retrofit Unit test. Get particular school detail data.
   When the response has particular data, the result is correct.
+
+# /test/java/<packagename>/GetSchoolScoreTest.java :
+  Retrofit Unit test. Get particular school score data.
+   When the response has particular data, the result is correct.
 
 
 [ Source code download address ]======================================
