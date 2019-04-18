@@ -8,10 +8,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.donggeunjung.nycschools.model.SchoolSimple;
 import com.donggeunjung.nycschools.viewmodel.DataViewModel;
 import com.donggeunjung.nycschools.R;
 import com.donggeunjung.nycschools.databinding.FragmentBodyBinding;
-import com.donggeunjung.nycschools.model.NycSchool;
 /*
  * BodyFragment.java : Detail infomation fragment source file
  * Author : DONGGEUN JUNG (Dennis)
@@ -61,12 +61,12 @@ public class BodyFragment extends Fragment {
     }
 
     // Request particular school detail information to server.
-    public void reqSchoolScore(NycSchool nycSchool) {
+    public void reqSchoolScore(SchoolSimple schoolSimple) {
         // Set received school simple data to ViewModel
-        mViewModel.getNycSchool().setValue(nycSchool);
+        mViewModel.getSchoolSimple().setValue(schoolSimple);
         // Request particular school SAT score information to server.
-        mViewModel.getScore(nycSchool.getDbn());
+        mViewModel.getScore(schoolSimple.getDbn());
         // Request particular school detail information to server.
-        mViewModel.getSchoolDetail(nycSchool.getDbn());
+        mViewModel.getSchoolDetail(schoolSimple.getDbn());
     }
 }

@@ -1,6 +1,6 @@
 package com.donggeunjung.nycschools;
 
-import com.donggeunjung.nycschools.model.ApiNyc;
+import com.donggeunjung.nycschools.model.ApiSchool;
 import com.donggeunjung.nycschools.model.SchoolDetail;
 
 import org.junit.Test;
@@ -26,11 +26,11 @@ public class RetrofitTest {
     public void login_Success() {
         // Make Retrofit object
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(ApiNyc.BASE_URL)
+                .baseUrl(ApiSchool.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create()) //Here we are using the GsonConverterFactory to directly convert json data to object
                 .build();
         // Make Retrofit API object
-        ApiNyc api = retrofit.create(ApiNyc.class);
+        ApiSchool api = retrofit.create(ApiSchool.class);
         Call<ArrayList<SchoolDetail>> call = api.getSchoolDetail("02M260");
 
         try {

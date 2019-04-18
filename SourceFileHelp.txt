@@ -3,9 +3,12 @@
 * Author : DONGGEUN JUNG (Dennis)
 * Date : Apr.16.2019
 */
-Project URL : https://gitlab.com/DonggeunJung/NycSchools
-Project slug : Shows School data list and SAT score. Using Retrofit API
-Project description : Android sample project shows School data list and SAT score. Using Retrofit API, DataBinding, LiveData, Dagger, and Fragment.
+# Project URL : https://gitlab.com/DonggeunJung/NycSchools
+# Project slug : Shows School data list and SAT score. Using Retrofit API
+# Project description : Android sample project shows School data list and SAT score. Using Retrofit API, DataBinding, LiveData, Dagger, and Fragment.
+
+
+[Java source files]==========================================
 
 # /java/<packagename>/view/BaseActivity.java : 
   Super class of activitys
@@ -31,10 +34,10 @@ Project description : Android sample project shows School data list and SAT scor
 # /java/<packagename>/viewmodel/DataViewModel.java :
   ViewModel class. Manage data & request to server
 
-# /java/<packagename>/model/ApiNyc.java :
+# /java/<packagename>/model/ApiSchool.java :
   Retrofit API interface
 
-# /java/<packagename>/model/NycSchool.java :
+# /java/<packagename>/model/SchoolSimple.java :
   School simple data class
 
 # /java/<packagename>/model/SchoolDetail.java :
@@ -42,6 +45,13 @@ Project description : Android sample project shows School data list and SAT scor
 
 # /java/<packagename>/model/SchoolScore.java :
   SAT score data class
+
+# /java/<packagename>/Util.java :
+  Contains useful functions.
+  All functions can be called unless making instance(object)
+
+
+[Layout resource files]==========================================
 
 # /res/layout/activity_main.xml :
   Main activity layout file for Phone.
@@ -62,12 +72,14 @@ Project description : Android sample project shows School data list and SAT scor
   Retrofit Unit test.
   When the response has particular data, the result is correct.
 
-# Source code download address
- = GitHub
+
+[ Source code download address ]======================================
+
+# GitHub
 https://github.com/DonggeunJung/NYCSchools
 
- = Google drive
+# Google drive
 https://drive.google.com/file/d/1MxOOvF9jRkvZrt6YTTZeQZN1IumlZntN/view?usp=sharing
 
- = GitLab
+# GitLab
 https://gitlab.com/DonggeunJung/NYCSchools

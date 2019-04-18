@@ -3,10 +3,10 @@ package com.donggeunjung.nycschools.viewmodel;
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 
-import com.donggeunjung.nycschools.model.ApiNyc;
-import com.donggeunjung.nycschools.model.NycSchool;
+import com.donggeunjung.nycschools.model.ApiSchool;
 import com.donggeunjung.nycschools.model.SchoolDetail;
 import com.donggeunjung.nycschools.model.SchoolScore;
+import com.donggeunjung.nycschools.model.SchoolSimple;
 
 import java.util.ArrayList;
 
@@ -21,14 +21,14 @@ import retrofit2.Response;
  * Date : Apr.16.2019
  */
 public class DataViewModel extends ViewModel {
-    private MutableLiveData<ArrayList<NycSchool>> mListSchools;
-    private MutableLiveData<ArrayList<NycSchool>> mTotalSchools;
-    private MutableLiveData<NycSchool> mNycSchool;
+    private MutableLiveData<ArrayList<SchoolSimple>> mListSchools;
+    private MutableLiveData<ArrayList<SchoolSimple>> mTotalSchools;
+    private MutableLiveData<SchoolSimple> mSchoolSimple;
     private MutableLiveData<SchoolScore> mSchoolScore;
     private MutableLiveData<SchoolDetail> mSchoolDetail;
 
     @Inject
-    ApiNyc mApi;
+    ApiSchool mApi;
 
     // Constructor - Inject Retrofit API object
     public DataViewModel() {
@@ -37,27 +37,27 @@ public class DataViewModel extends ViewModel {
     }
 
     // Return searched School simple data list
-    public MutableLiveData<ArrayList<NycSchool>> getListSchools() {
+    public MutableLiveData<ArrayList<SchoolSimple>> getListSchools() {
         if (mListSchools == null) {
-            mListSchools = new MutableLiveData<ArrayList<NycSchool>>();
+            mListSchools = new MutableLiveData<ArrayList<SchoolSimple>>();
         }
         return mListSchools;
     }
 
     // Return total School simple data list
-    public MutableLiveData<ArrayList<NycSchool>> getTotalSchools() {
+    public MutableLiveData<ArrayList<SchoolSimple>> getTotalSchools() {
         if (mTotalSchools == null) {
-            mTotalSchools = new MutableLiveData<ArrayList<NycSchool>>();
+            mTotalSchools = new MutableLiveData<ArrayList<SchoolSimple>>();
         }
         return mTotalSchools;
     }
 
     // Return current school simple data
-    public MutableLiveData<NycSchool> getNycSchool() {
-        if (mNycSchool == null) {
-            mNycSchool = new MutableLiveData<NycSchool>();
+    public MutableLiveData<SchoolSimple> getSchoolSimple() {
+        if (mSchoolSimple == null) {
+            mSchoolSimple = new MutableLiveData<SchoolSimple>();
         }
-        return mNycSchool;
+        return mSchoolSimple;
     }
 
     // Return current school score data
@@ -80,25 +80,25 @@ public class DataViewModel extends ViewModel {
 
     // Request school data list to server
     public void getSchools() {
-        Call<ArrayList<NycSchool>> call = mApi.getSchools();
-        call.enqueue(new Callback<ArrayList<NycSchool>>() {
+        Call<ArrayList<SchoolSimple>> call = mApi.getSchools();
+        call.enqueue(new Callback<ArrayList<SchoolSimple>>() {
 
             @Override
-            public void onResponse(Call<ArrayList<NycSchool>> call, Response<ArrayList<NycSchool>> response) {
+            public void onResponse(Call<ArrayList<SchoolSimple>> call, Response<ArrayList<SchoolSimple>> response) {
                 // When completed, get data & save
-                ArrayList<NycSchool> totalSchools = response.body();
+                ArrayList<SchoolSimple> totalSchools = response.body();
                 getTotalSchools().setValue(totalSchools);
 
                 // Copy all school object link to new ArrayList
-                ArrayList<NycSchool> listSchools = new ArrayList<NycSchool>();
-                for( NycSchool school : totalSchools) {
-                    listSchools.add(school);
+                ArrayList<SchoolSimple> listSchools = new ArrayList<SchoolSimple>();
+                for( SchoolSimple schoolSimple : totalSchools) {
+                    listSchools.add(schoolSimple);
                 }
                 getListSchools().setValue(listSchools);
             }
 
             @Override
-            public void onFailure(Call<ArrayList<NycSchool>> call, Throwable t) {}
+            public void onFailure(Call<ArrayList<SchoolSimple>> call, Throwable t) {}
         });
     }
 
@@ -118,9 +118,9 @@ public class DataViewModel extends ViewModel {
                 }
                 // When data is not exist, make empty data object
                 else {
-                    NycSchool nycSchool = mNycSchool.getValue();
-                    SchoolDetail detail = new SchoolDetail(nycSchool.getDbn(),
-                            nycSchool.getSchool_name(), "", "", "", "", "", "", "", "", "", "");
+                    SchoolSimple schoolSimple = mSchoolSimple.getValue();
+                    SchoolDetail detail = new SchoolDetail(schoolSimple.getDbn(),
+                            schoolSimple.getSchool_name(), "", "", "", "", "", "", "", "", "", "");
                     mSchoolDetail.setValue(detail);
                 }
             }
@@ -146,9 +146,9 @@ public class DataViewModel extends ViewModel {
                 }
                 // When data is not exist, make empty data object
                 else {
-                    NycSchool nycSchool = mNycSchool.getValue();
-                    SchoolScore score = new SchoolScore(nycSchool.getDbn(),
-                            nycSchool.getSchool_name(), "0", "", "", "");
+                    SchoolSimple schoolSimple = mSchoolSimple.getValue();
+                    SchoolScore score = new SchoolScore(schoolSimple.getDbn(),
+                            schoolSimple.getSchool_name(), "0", "", "", "");
                     mSchoolScore.setValue(score);
                 }
             }
@@ -160,16 +160,16 @@ public class DataViewModel extends ViewModel {
 
     // Search particular word in Name of School list
     public void searchSchoolName(String strSearch) {
-        ArrayList<NycSchool> listSchools = getSearchedSchoolList(strSearch);
+        ArrayList<SchoolSimple> listSchools = getSearchedSchoolList(strSearch);
         getListSchools().setValue(listSchools);
     }
 
     // Make a ArrayList by searching School name in Total School list
-    protected ArrayList<NycSchool> getSearchedSchoolList(String strSearch) {
-        ArrayList<NycSchool> listSchools = new ArrayList<NycSchool>();
-        for(NycSchool school : mTotalSchools.getValue()) {
-            if( school.searchName(strSearch) )
-                listSchools.add(school);
+    protected ArrayList<SchoolSimple> getSearchedSchoolList(String strSearch) {
+        ArrayList<SchoolSimple> listSchools = new ArrayList<SchoolSimple>();
+        for(SchoolSimple schoolSimple : mTotalSchools.getValue()) {
+            if( schoolSimple.searchName(strSearch) )
+                listSchools.add(schoolSimple);
         }
         return listSchools;
     }

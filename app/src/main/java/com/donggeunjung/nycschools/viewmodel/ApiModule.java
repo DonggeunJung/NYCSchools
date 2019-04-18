@@ -1,9 +1,7 @@
 package com.donggeunjung.nycschools.viewmodel;
 
-import com.donggeunjung.nycschools.model.ApiNyc;
-
+import com.donggeunjung.nycschools.model.ApiSchool;
 import javax.inject.Singleton;
-
 import dagger.Module;
 import dagger.Provides;
 /*
@@ -15,8 +13,8 @@ import dagger.Provides;
 class ApiModule {
     @Provides
     @Singleton
-    ApiNyc provideApi() {
+    ApiSchool provideApi() {
         // Make Retrofit API object & return
-        return ApiNyc.retrofit.create(ApiNyc.class);
+        return ApiSchool.retrofit.create(ApiSchool.class);
     }
 }

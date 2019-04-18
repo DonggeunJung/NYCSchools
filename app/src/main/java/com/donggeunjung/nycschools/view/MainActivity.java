@@ -6,7 +6,8 @@ import android.view.KeyEvent;
 import android.view.View;
 
 import com.donggeunjung.nycschools.R;
-import com.donggeunjung.nycschools.model.NycSchool;
+import com.donggeunjung.nycschools.model.SchoolSimple;
+
 /*
  * MainActivity.java : Main activity class. Load 2 fragments
  * Author : DONGGEUN JUNG (Dennis)
@@ -77,9 +78,9 @@ public class MainActivity extends BaseActivity {
             if( mViewModel.getListSchools().getValue().size() <= index )
                 return;
             // Get school simple data from ViewModel
-            NycSchool school = mViewModel.getListSchools().getValue().get(index);
+            SchoolSimple schoolSimple = mViewModel.getListSchools().getValue().get(index);
             // Send school simple data to details fragment
-            bf.reqSchoolScore(school);
+            bf.reqSchoolScore(schoolSimple);
         }
     };
 

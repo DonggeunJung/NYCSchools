@@ -10,10 +10,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.donggeunjung.nycschools.model.SchoolSimple;
 import com.donggeunjung.nycschools.viewmodel.DataViewModel;
 import com.donggeunjung.nycschools.R;
 import com.donggeunjung.nycschools.databinding.FragmentListBinding;
-import com.donggeunjung.nycschools.model.NycSchool;
 
 import java.util.ArrayList;
 /*
@@ -57,7 +57,7 @@ public class ListFragment extends Fragment {
         mBinding.setLifecycleOwner(this);
         // Request School list to server
         if( mViewModel != null ) {
-            ArrayList<NycSchool> schools = mViewModel.getListSchools().getValue();
+            ArrayList<SchoolSimple> schools = mViewModel.getListSchools().getValue();
             // Init RecyclerView adapter
             if( schools == null || schools.size() == 0 )
                 // When School list data is not exist, reqest to server

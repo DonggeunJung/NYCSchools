@@ -1,6 +1,6 @@
 package com.donggeunjung.nycschools.viewmodel;
 
-import com.donggeunjung.nycschools.model.ApiNyc;
+import com.donggeunjung.nycschools.model.ApiSchool;
 
 import javax.inject.Singleton;
 
@@ -13,7 +13,7 @@ import dagger.Component;
 @Singleton
 @Component(modules = {ApiModule.class})
 interface ApiComponent {
-    ApiNyc provideApi();
+    ApiSchool provideApi();
 
     void inject(DataViewModel viewModel);
 }

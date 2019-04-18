@@ -11,10 +11,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.donggeunjung.nycschools.model.SchoolSimple;
 import com.donggeunjung.nycschools.viewmodel.DataViewModel;
 import com.donggeunjung.nycschools.R;
 import com.donggeunjung.nycschools.databinding.SchoolItemBinding;
-import com.donggeunjung.nycschools.model.NycSchool;
 
 import java.util.ArrayList;
 /*
@@ -38,9 +38,9 @@ public class RvAdapter extends RecyclerView.Adapter<RvAdapter.ViewHolder> {
         mAdapter = this;
 
         // make School simple data list Observer object
-        final Observer<ArrayList<NycSchool>> schoolsObserver = new Observer<ArrayList<NycSchool>>() {
+        final Observer<ArrayList<SchoolSimple>> schoolsObserver = new Observer<ArrayList<SchoolSimple>>() {
             @Override
-            public void onChanged(@Nullable final ArrayList<NycSchool> heros) {
+            public void onChanged(@Nullable final ArrayList<SchoolSimple> schools) {
                 // When School simple data list is changed update RecyclerView
                 mAdapter.notifyDataSetChanged();
             }
@@ -82,7 +82,7 @@ public class RvAdapter extends RecyclerView.Adapter<RvAdapter.ViewHolder> {
     @Override
     public int getItemCount() {
         // Get the school simple data items count
-        ArrayList<NycSchool> schools = mViewModel.getListSchools().getValue();
+        ArrayList<SchoolSimple> schools = mViewModel.getListSchools().getValue();
         // When the data object is not exist return 0
         if( schools == null )
             return 0;
