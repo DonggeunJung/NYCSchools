@@ -62,10 +62,10 @@ public class ListFragment extends Fragment {
             // Init RecyclerView adapter
             if( schools == null || schools.size() == 0 )
                 // When School list data is not exist, reqest to server
-                initData(true);
+                initList(true);
             else
                 // When School list data is exist, do not reqest
-                initData(false);
+                initList(false);
         }
 
         // Set Text changing listener of Search EditText
@@ -73,6 +73,25 @@ public class ListFragment extends Fragment {
         return v;
     }
 
+    // Init RecyclerView adapter & Request School list to server
+    public void initList() {
+        initList(true);
+    }
+
+    // Init RecyclerView adapter & Request School list to server
+    protected void initList(boolean loadData) {
+        // Init RecyclerView adapter
+        rvAdapter = new SchoolRVAdapter(mViewModel, mListener, this);
+        mBinding.rvSchool.setAdapter( rvAdapter );
+        mBinding.rvSchool.setLayoutManager(new LinearLayoutManager(getContext(),
+                LinearLayoutManager.VERTICAL, false));
+        // Show Item Divider on RecyclerView
+        mBinding.rvSchool.addItemDecoration(new DividerItemDecoration(getContext(), 1));
+
+        // Request School list to server
+        if( loadData )
+            mViewModel.getSchoolList();
+    }
     // Text changing listener of Search EditText
     TextWatcher mSearchTextWatcher = new TextWatcher() {
         // When input text changing
@@ -95,23 +114,4 @@ public class ListFragment extends Fragment {
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
     };
 
-    // Init RecyclerView adapter & Request School list to server
-    public void initData() {
-        initData(true);
-    }
-
-    // Init RecyclerView adapter & Request School list to server
-    protected void initData(boolean loadData) {
-        // Init RecyclerView adapter
-        rvAdapter = new SchoolRVAdapter(mViewModel, mListener, this);
-        mBinding.rvSchool.setAdapter( rvAdapter );
-        mBinding.rvSchool.setLayoutManager(new LinearLayoutManager(getContext(),
-                LinearLayoutManager.VERTICAL, false));
-        // Show Item Divider on RecyclerView
-        mBinding.rvSchool.addItemDecoration(new DividerItemDecoration(getContext(), 1));
-
-        // Request School list to server
-        if( loadData )
-            mViewModel.getSchoolList();
-    }
 }

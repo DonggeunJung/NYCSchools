@@ -16,8 +16,8 @@ import com.donggeunjung.nycschools.model.SchoolSimple;
 public class MainActivity extends BaseActivity {
     boolean mMultiPanel = false;
     int mCurrentFragIndex = 0;
-    ListFragment lf;
-    BodyFragment bf;
+    ListFragment mListF;
+    BodyFragment mBodyF;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,15 +40,15 @@ public class MainActivity extends BaseActivity {
         }
 
         // Send event listener & ViewModel objects to School list fragment
-        lf = ListFragment.makeObj();
-        lf.setProvider(mClickListener, mViewModel);
+        mListF = ListFragment.makeObj();
+        mListF.setProvider(mClickListener, mViewModel);
         // When multiple panels mode, request school list to server
         if( mMultiPanel )
-            lf.initData();
+            mListF.initList();
 
         // Send event listener & ViewModel objects to details fragment
-        bf = BodyFragment.makeObj();
-        bf.setProvider(this, mViewModel);
+        mBodyF = BodyFragment.makeObj();
+        mBodyF.setProvider(this, mViewModel);
     }
 
     // When single panel mode, switch fragment
@@ -79,8 +79,8 @@ public class MainActivity extends BaseActivity {
                 return;
             // Get school simple data from ViewModel
             SchoolSimple schoolSimple = mViewModel.getListSchools().getValue().get(index);
-            // Send school simple data to details fragment
-            bf.reqSchoolScore(schoolSimple);
+            // Request school score & datail data to server
+            mViewModel.reqSchoolScore(schoolSimple);
         }
     };
 

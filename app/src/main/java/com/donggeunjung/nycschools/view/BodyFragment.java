@@ -60,13 +60,4 @@ public class BodyFragment extends Fragment {
         return v;
     }
 
-    // Request particular school detail information to server.
-    public void reqSchoolScore(SchoolSimple schoolSimple) {
-        // Set received school simple data to ViewModel
-        mViewModel.getSchoolSimple().setValue(schoolSimple);
-        // Request particular school SAT score information to server.
-        mViewModel.getSchoolScore(schoolSimple.getDbn());
-        // Request particular school detail information to server.
-        mViewModel.getSchoolDetail(schoolSimple.getDbn());
-    }
 }

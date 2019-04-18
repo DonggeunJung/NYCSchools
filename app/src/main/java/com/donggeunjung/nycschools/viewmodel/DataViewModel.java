@@ -95,6 +95,11 @@ public class DataViewModel extends ViewModel {
                     listSchools.add(schoolSimple);
                 }
                 getListSchools().setValue(listSchools);
+
+                // Show 1st item's detail data
+                if( listSchools.size() > 0 ) {
+                    reqSchoolScore(listSchools.get(0));
+                }
             }
 
             @Override
@@ -114,14 +119,14 @@ public class DataViewModel extends ViewModel {
                 // When completed, get data & save
                 if( size > 0 ) {
                     SchoolDetail detail = listDetails.get(0);
-                    mSchoolDetail.setValue(detail);
+                    getSchoolDetail().setValue(detail);
                 }
                 // When data is not exist, make empty data object
                 else {
-                    SchoolSimple schoolSimple = mSchoolSimple.getValue();
+                    SchoolSimple schoolSimple = getSchoolSimple().getValue();
                     SchoolDetail detail = new SchoolDetail(schoolSimple.getDbn(),
                             schoolSimple.getSchool_name(), "", "", "", "", "", "", "", "", "", "");
-                    mSchoolDetail.setValue(detail);
+                    getSchoolDetail().setValue(detail);
                 }
             }
 
@@ -142,20 +147,30 @@ public class DataViewModel extends ViewModel {
                 // When completed, get data & save
                 if( size > 0 ) {
                     SchoolScore score = listGrades.get(0);
-                    mSchoolScore.setValue(score);
+                    getSchoolScore().setValue(score);
                 }
                 // When data is not exist, make empty data object
                 else {
-                    SchoolSimple schoolSimple = mSchoolSimple.getValue();
+                    SchoolSimple schoolSimple = getSchoolSimple().getValue();
                     SchoolScore score = new SchoolScore(schoolSimple.getDbn(),
                             schoolSimple.getSchool_name(), "0", "", "", "");
-                    mSchoolScore.setValue(score);
+                    getSchoolScore().setValue(score);
                 }
             }
 
             @Override
             public void onFailure(Call<ArrayList<SchoolScore>> call, Throwable t) {}
         });
+    }
+
+    // Request particular school detail information to server.
+    public void reqSchoolScore(SchoolSimple schoolSimple) {
+        // Set received school simple data to ViewModel
+        getSchoolSimple().setValue(schoolSimple);
+        // Request particular school SAT score information to server.
+        getSchoolScore(schoolSimple.getDbn());
+        // Request particular school detail information to server.
+        getSchoolDetail(schoolSimple.getDbn());
     }
 
     // Search particular word in Name of School list
@@ -167,7 +182,7 @@ public class DataViewModel extends ViewModel {
     // Make a ArrayList by searching School name in Total School list
     protected ArrayList<SchoolSimple> getSearchedSchoolList(String strSearch) {
         ArrayList<SchoolSimple> listSchools = new ArrayList<SchoolSimple>();
-        for(SchoolSimple schoolSimple : mTotalSchools.getValue()) {
+        for(SchoolSimple schoolSimple : getTotalSchools().getValue()) {
             if( schoolSimple.searchName(strSearch) )
                 listSchools.add(schoolSimple);
         }
