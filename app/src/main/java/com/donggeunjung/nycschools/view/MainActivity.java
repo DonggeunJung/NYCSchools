@@ -2,6 +2,7 @@ package com.donggeunjung.nycschools.view;
 
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.KeyEvent;
 import android.view.View;
@@ -20,6 +21,8 @@ import java.util.ArrayList;
 public class MainActivity extends BaseActivity {
     boolean mMultiPanel = false;
     int mCurrentFragIndex = 0;
+    ListFragment mListF;
+    BodyFragment mBodyF;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +39,8 @@ public class MainActivity extends BaseActivity {
         View panelBody = findViewById(R.id.panelBody);
         if( panelBody != null && panelBody.getVisibility() == View.VISIBLE ) {
             mMultiPanel = true;
+            // Get Body fragment from layout & save to member variable
+            mBodyF = (BodyFragment)getSupportFragmentManager().findFragmentById(R.id.fragBody);
         }
         // Show the 1st fragment
         switchFragment(0);
@@ -66,8 +71,16 @@ public class MainActivity extends BaseActivity {
     private void switchFragment(int fragIndex) {
         // Save new fragment index number
         mCurrentFragIndex = fragIndex;
-        // Get the new fragment object
-        Fragment fragment = (fragIndex == 0) ? ListFragment.makeObj() : BodyFragment.makeObj();
+        // Get the new fragment object & save to member variable
+        Fragment fragment;
+        if( fragIndex == 0 ) {
+            fragment = new ListFragment();
+            mListF = (ListFragment)fragment;
+        }
+        else {
+            fragment = new BodyFragment();
+            mBodyF = (BodyFragment)fragment;
+        }
 
         // Change fragment on container layout(ViewGroup)
         FragmentTransaction transaction = getSupportFragmentManager()

@@ -1,5 +1,7 @@
 package com.donggeunjung.nycschools.view;
 
+import android.app.Activity;
+import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -23,19 +25,9 @@ import java.util.ArrayList;
  * Date : Apr.16.2019
  */
 public class ListFragment extends BaseFragment {
-    static ListFragment mFragment;
     static View.OnClickListener mListener;
     FragmentListBinding mBinding;
     SchoolRVAdapter rvAdapter;
-
-    // Make self fragment object and return
-    public static Fragment makeObj() {
-        // Make self fragment object, when it is not created yet
-        if( mFragment == null ) {
-            mFragment = new ListFragment();
-        }
-        return mFragment;
-    }
 
     // Receive event listener & ViewModel objects and save as member variable
     //public void setProvider(View.OnClickListener listener, DataViewModel viewModel) {
@@ -46,7 +38,6 @@ public class ListFragment extends BaseFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mFragment = this;
         // Request School list to server
         mViewModel.getSchoolList();
     }
