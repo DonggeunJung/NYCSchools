@@ -24,17 +24,18 @@ import java.util.ArrayList;
  */
 public class SchoolRVAdapter extends RecyclerView.Adapter<SchoolRVAdapter.ViewHolder> {
     private DataViewModel mViewModel;
-    View.OnClickListener listener;
+    View.OnClickListener mListener;
     Fragment mParent;
     RecyclerView.Adapter<SchoolRVAdapter.ViewHolder> mAdapter;
 
     // Constructor
-    public SchoolRVAdapter(DataViewModel viewModel, View.OnClickListener listener,
-                     Fragment parent) {
+    public SchoolRVAdapter(DataViewModel viewModel, Fragment parent,
+                           View.OnClickListener listener) {
+
         // Save ViewModel, event listener, fragment objects to member variable
         this.mViewModel = viewModel;
-        this.listener = listener;
         this.mParent = parent;
+        this.mListener = listener;
         mAdapter = this;
 
         // make School simple data list Observer object
@@ -67,7 +68,7 @@ public class SchoolRVAdapter extends RecyclerView.Adapter<SchoolRVAdapter.ViewHo
         // Set binding object to ViewHolder object
         vh.binding = binding;
         // Set click event listener to ViewHolder object
-        vh.itemView.setOnClickListener(listener);
+        vh.itemView.setOnClickListener(mListener);
         return vh;
     }
 

@@ -17,47 +17,36 @@ import com.donggeunjung.nycschools.databinding.FragmentBodyBinding;
  * Author : DONGGEUN JUNG (Dennis)
  * Date : Apr.16.2019
  */
-public class BodyFragment extends Fragment {
-    static BodyFragment fragment;
+public class BodyFragment extends BaseFragment {
+    static BodyFragment mFragment;
     FragmentBodyBinding mBinding;
-    AppCompatActivity mActivity;
-    DataViewModel mViewModel;
 
     // Make self fragment object and return
-    public static BodyFragment makeObj() {
+    public static Fragment makeObj() {
         // Make self fragment object, when it is not created yet
-        if( fragment == null ) {
-            fragment = new BodyFragment();
+        if( mFragment == null ) {
+            mFragment = new BodyFragment();
         }
-        return fragment;
+        return mFragment;
     }
 
-    // Receive parent & ViewModel objects and save as member variable
-    public void setProvider(AppCompatActivity activity, DataViewModel viewModel) {
-        mActivity = activity;
-        mViewModel = viewModel;
-        // When Binding object is exist, set ViewModel
-        if( mBinding != null ) {
-            mBinding.setViewModel(mViewModel);
-        }
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // Save self fragment object as a member variable
+        mFragment = this;
     }
 
     // When Fragment view is created, load layout file
     // Bind view with ViewModel
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Save self fragment object as a member variable
-        fragment = this;
         // Bind view with ViewModel
         mBinding = DataBindingUtil.inflate(
                 inflater, R.layout.fragment_body, container, false);
-        View v = mBinding.getRoot();
         mBinding.setLifecycleOwner(this);
-        // When ViewModel is exist, connect with Binding object
-        if( mViewModel != null ) {
-            mBinding.setViewModel(mViewModel);
-        }
-        return v;
+        mBinding.setViewModel(mViewModel);
+        return mBinding.getRoot();
     }
 
 }

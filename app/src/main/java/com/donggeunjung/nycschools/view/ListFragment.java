@@ -22,26 +22,33 @@ import java.util.ArrayList;
  * Author : DONGGEUN JUNG (Dennis)
  * Date : Apr.16.2019
  */
-public class ListFragment extends Fragment {
-    static ListFragment fragment;
+public class ListFragment extends BaseFragment {
+    static ListFragment mFragment;
+    static View.OnClickListener mListener;
     FragmentListBinding mBinding;
-    View.OnClickListener mListener;
-    DataViewModel mViewModel;
     SchoolRVAdapter rvAdapter;
 
     // Make self fragment object and return
-    public static ListFragment makeObj() {
+    public static Fragment makeObj() {
         // Make self fragment object, when it is not created yet
-        if( fragment == null ) {
-            fragment = new ListFragment();
+        if( mFragment == null ) {
+            mFragment = new ListFragment();
         }
-        return fragment;
+        return mFragment;
     }
 
     // Receive event listener & ViewModel objects and save as member variable
-    public void setProvider(View.OnClickListener listener, DataViewModel viewModel) {
+    //public void setProvider(View.OnClickListener listener, DataViewModel viewModel) {
+    public static void setProvider(View.OnClickListener listener) {
         mListener = listener;
-        mViewModel = viewModel;
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mFragment = this;
+        // Request School list to server
+        mViewModel.getSchoolList();
     }
 
     // When Fragment view is created, load layout file
@@ -49,49 +56,29 @@ public class ListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup
             container, Bundle savedInstanceState) {
         // Save self fragment object as a member variable
-        fragment = this;
         // Bind view with ViewModel
         mBinding = DataBindingUtil.inflate(
                 inflater, R.layout.fragment_list, container, false);
-        View v = mBinding.getRoot();
-
         mBinding.setLifecycleOwner(this);
-        // Request School list to server
-        if( mViewModel != null ) {
-            ArrayList<SchoolSimple> schools = mViewModel.getListSchools().getValue();
-            // Init RecyclerView adapter
-            if( schools == null || schools.size() == 0 )
-                // When School list data is not exist, reqest to server
-                initList(true);
-            else
-                // When School list data is exist, do not reqest
-                initList(false);
-        }
+        initList();
 
         // Set Text changing listener of Search EditText
         mBinding.etSearch.addTextChangedListener(mSearchTextWatcher);
-        return v;
+        return mBinding.getRoot();
     }
 
     // Init RecyclerView adapter & Request School list to server
-    public void initList() {
-        initList(true);
-    }
-
-    // Init RecyclerView adapter & Request School list to server
-    protected void initList(boolean loadData) {
+    //protected void initList(boolean loadData) {
+    protected void initList() {
         // Init RecyclerView adapter
-        rvAdapter = new SchoolRVAdapter(mViewModel, mListener, this);
+        rvAdapter = new SchoolRVAdapter(mViewModel, this, mListener);
         mBinding.rvSchool.setAdapter( rvAdapter );
         mBinding.rvSchool.setLayoutManager(new LinearLayoutManager(getContext(),
                 LinearLayoutManager.VERTICAL, false));
         // Show Item Divider on RecyclerView
         mBinding.rvSchool.addItemDecoration(new DividerItemDecoration(getContext(), 1));
-
-        // Request School list to server
-        if( loadData )
-            mViewModel.getSchoolList();
     }
+
     // Text changing listener of Search EditText
     TextWatcher mSearchTextWatcher = new TextWatcher() {
         // When input text changing

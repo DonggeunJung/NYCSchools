@@ -5,12 +5,18 @@
     android:layout_height="match_parent"
     tools:context=".view.MainActivity" >
 
-    <fragment
+    <FrameLayout
+        android:id="@+id/panelFragment"
+        android:layout_width="0dp"
+        android:layout_weight="4"
+        android:layout_height="match_parent" />
+
+    <!--<fragment
         class="com.donggeunjung.nycschools.view.ListFragment"
         android:id="@+id/fragList"
         android:layout_width="0dp"
         android:layout_weight="4"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent" />-->
 
     <FrameLayout
         android:id="@+id/panelBody"

@@ -1,5 +1,8 @@
 package com.donggeunjung.nycschools.viewmodel;
 
+import android.arch.lifecycle.ViewModelProviders;
+import android.support.v4.app.FragmentActivity;
+
 import com.donggeunjung.nycschools.model.ApiSchool;
 import javax.inject.Singleton;
 import dagger.Module;
