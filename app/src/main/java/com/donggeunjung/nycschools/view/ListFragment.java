@@ -25,15 +25,8 @@ import java.util.ArrayList;
  * Date : Apr.16.2019
  */
 public class ListFragment extends BaseFragment {
-    static View.OnClickListener mListener;
     FragmentListBinding mBinding;
     SchoolRVAdapter rvAdapter;
-
-    // Receive event listener & ViewModel objects and save as member variable
-    //public void setProvider(View.OnClickListener listener, DataViewModel viewModel) {
-    public static void setProvider(View.OnClickListener listener) {
-        mListener = listener;
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -59,10 +52,10 @@ public class ListFragment extends BaseFragment {
     }
 
     // Init RecyclerView adapter & Request School list to server
-    //protected void initList(boolean loadData) {
     protected void initList() {
+        SchoolRVAdapter.ItemListener listener = (SchoolRVAdapter.ItemListener)getActivity();
         // Init RecyclerView adapter
-        rvAdapter = new SchoolRVAdapter(mViewModel, this, mListener);
+        rvAdapter = new SchoolRVAdapter(mViewModel, this, listener);
         mBinding.rvSchool.setAdapter( rvAdapter );
         mBinding.rvSchool.setLayoutManager(new LinearLayoutManager(getContext(),
                 LinearLayoutManager.VERTICAL, false));
@@ -91,5 +84,4 @@ public class ListFragment extends BaseFragment {
         @Override
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
     };
-
 }

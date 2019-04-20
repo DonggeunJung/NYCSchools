@@ -4,9 +4,17 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <FrameLayout
-            android:id="@+id/panelFragment"
+    <FrameLayout
+        android:id="@+id/panelList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <fragment
+            class="com.donggeunjung.nycschools.view.ListFragment"
+            android:id="@+id/fragList"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
+
+    </FrameLayout>
 
     </RelativeLayout>

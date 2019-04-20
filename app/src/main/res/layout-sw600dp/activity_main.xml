@@ -6,17 +6,18 @@
     tools:context=".view.MainActivity" >
 
     <FrameLayout
-        android:id="@+id/panelFragment"
+        android:id="@+id/panelList"
         android:layout_width="0dp"
         android:layout_weight="4"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent">
 
-    <!--<fragment
-        class="com.donggeunjung.nycschools.view.ListFragment"
-        android:id="@+id/fragList"
-        android:layout_width="0dp"
-        android:layout_weight="4"
-        android:layout_height="match_parent" />-->
+        <fragment
+            class="com.donggeunjung.nycschools.view.ListFragment"
+            android:id="@+id/fragList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </FrameLayout>
 
     <FrameLayout
         android:id="@+id/panelBody"
