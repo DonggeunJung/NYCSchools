@@ -9,17 +9,9 @@ import com.donggeunjung.nycschools.viewmodel.DataViewModel;
 public class App extends Application {
     static DataViewModel mViewModel;
 
-    public void onCreate() {
-        super.onCreate();
-    }
-
-    public DataViewModel getViewModel(FragmentActivity activity) {
+    public static DataViewModel getViewModel(FragmentActivity activity) {
         if( mViewModel == null )
             mViewModel = ViewModelProviders.of(activity).get(DataViewModel.class);
         return mViewModel;
-    }
-
-    public void onTerminate() {
-        super.onTerminate();
     }
 }

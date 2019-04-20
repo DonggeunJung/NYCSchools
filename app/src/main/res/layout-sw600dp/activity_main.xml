@@ -19,23 +19,11 @@
 
     </FrameLayout>
 
-    <FrameLayout
-        android:id="@+id/panelBody"
+    <fragment
+        class="com.donggeunjung.nycschools.view.BodyFragment"
+        android:id="@+id/fragBody"
         android:layout_width="0dp"
         android:layout_weight="5"
-        android:layout_height="match_parent">
-
-        <fragment
-            class="com.donggeunjung.nycschools.view.BodyFragment"
-            android:id="@+id/fragBody"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-        <!--<FrameLayout
-            android:id="@+id/panelFragment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />-->
-
-    </FrameLayout>
+        android:layout_height="match_parent" />
 
 </LinearLayout>

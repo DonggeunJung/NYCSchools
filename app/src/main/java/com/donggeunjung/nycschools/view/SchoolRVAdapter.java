@@ -73,13 +73,10 @@ public class SchoolRVAdapter extends RecyclerView.Adapter<SchoolRVAdapter.ViewHo
         // Set binding object to ViewHolder object
         vh.binding = binding;
         // Set click event listener to ViewHolder object
-        vh.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if( mListener == null ) return;
-                int index = Integer.parseInt((String)v.getTag());
-                mListener.onSchoolSelected(index);
-            }
+        vh.itemView.setOnClickListener(v -> {
+            if( mListener == null ) return;
+            int index = Integer.parseInt((String)v.getTag());
+            mListener.onSchoolSelected(index);
         });
         return vh;
     }

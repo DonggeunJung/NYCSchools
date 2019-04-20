@@ -38,12 +38,11 @@ public class MainActivity extends BaseActivity
         // Get List fragment from layout & save to member variable
         mListF = (ListFragment)getSupportFragmentManager().findFragmentById(R.id.fragList);
 
+        // Get Body fragment from layout & save to member variable
+        mBodyF = (BodyFragment)getSupportFragmentManager().findFragmentById(R.id.fragBody);
         // When 2nd panel is exist, it means multiple panel
-        View panelBody = findViewById(R.id.panelBody);
-        if( panelBody != null && panelBody.getVisibility() == View.VISIBLE ) {
+        if( mBodyF != null && mBodyF.getView().getVisibility() == View.VISIBLE ) {
             mMultiPanel = true;
-            // Get Body fragment from layout & save to member variable
-            mBodyF = (BodyFragment)getSupportFragmentManager().findFragmentById(R.id.fragBody);
         }
     }
 

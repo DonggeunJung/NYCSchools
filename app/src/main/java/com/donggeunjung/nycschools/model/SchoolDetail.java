@@ -4,19 +4,17 @@ package com.donggeunjung.nycschools.model;
  * Author : DONGGEUN JUNG (Dennis)
  * Date : Apr.16.2019
  */
-public class SchoolDetail {
-    private String dbn;
-    private String school_name;
-    private String fax_number;
-    private String city;
-    private String state_code;
-    private String zip;
-    private String location;
-    private String website;
-    private String subway;
-    private String bus;
-    private String total_students;
-    private String overview_paragraph;
+public class SchoolDetail extends SchoolSimple {
+    protected String fax_number;
+    protected String city;
+    protected String state_code;
+    protected String zip;
+    protected String location;
+    protected String website;
+    protected String subway;
+    protected String bus;
+    protected String total_students;
+    protected String overview_paragraph;
 
     // Constructor
     public SchoolDetail(String dbn, String school_name, String location, String zip, String website, String state_code, String subway, String fax_number, String city, String total_students, String bus, String overview_paragraph) {
@@ -32,16 +30,6 @@ public class SchoolDetail {
         this.total_students = total_students;
         this.bus = bus;
         this.overview_paragraph = overview_paragraph;
-    }
-
-    // Return DBN(Key of school)
-    public String getDbn() {
-        return dbn;
-    }
-
-    // Return school name
-    public String getSchool_name() {
-        return school_name;
     }
 
     // Return location

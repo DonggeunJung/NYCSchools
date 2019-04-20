@@ -25,17 +25,19 @@ public interface ApiSchool {
 
     // The base URL address of server
     String BASE_URL = "https://data.cityofnewyork.us/resource/";
+    String SCHOOL_PATH = "s3k6-pzi2.json";
+    String SCORE_PATH = "f9bf-2cp4.json";
 
     // Request school data list
-    @GET("s3k6-pzi2.json")
+    @GET(SCHOOL_PATH)
     Call<ArrayList<SchoolSimple>> getSchoolList();
 
     // Request particular school data
-    @GET("s3k6-pzi2.json")
+    @GET(SCHOOL_PATH)
     Call<ArrayList<SchoolDetail>> getSchoolDetail(@Query("dbn") String dbn);
 
     // Request SAT score data
-    @GET("f9bf-2cp4.json")
+    @GET(SCORE_PATH)
     Call<ArrayList<SchoolScore>> getSchoolScore(@Query("dbn") String dbn);
 
 }

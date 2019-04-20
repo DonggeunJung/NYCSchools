@@ -15,14 +15,12 @@ import javax.inject.Inject;
 * Date : Apr.16.2019
 */
 public class BaseActivity extends AppCompatActivity {
-    App mApp;
     public DataViewModel mViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mApp = (App)this.getApplication();
-        mViewModel = mApp.getViewModel(this);
+        mViewModel = App.getViewModel(this);
     }
 
 }

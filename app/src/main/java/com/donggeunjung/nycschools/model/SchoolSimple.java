@@ -7,10 +7,12 @@ import com.donggeunjung.nycschools.Util;
  * Date : Apr.16.2019
  */
 public class SchoolSimple {
-    private String dbn;
-    private String school_name;
-    private String phone_number;
-    private String school_email;
+    protected String dbn;
+    protected String school_name;
+    protected String phone_number;
+    protected String school_email;
+
+    public SchoolSimple() { }
 
     // Constructor
     public SchoolSimple(String dbn, String school_name, String phone_number, String school_email) {

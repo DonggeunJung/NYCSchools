@@ -9,6 +9,7 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,7 +27,6 @@ import java.util.ArrayList;
  */
 public class ListFragment extends BaseFragment {
     FragmentListBinding mBinding;
-    SchoolRVAdapter rvAdapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -36,7 +36,7 @@ public class ListFragment extends BaseFragment {
     }
 
     // When Fragment view is created, load layout file
-    // Request School list to server
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup
             container, Bundle savedInstanceState) {
         // Save self fragment object as a member variable
@@ -44,6 +44,7 @@ public class ListFragment extends BaseFragment {
         mBinding = DataBindingUtil.inflate(
                 inflater, R.layout.fragment_list, container, false);
         mBinding.setLifecycleOwner(this);
+        // Init RecyclerView adapter & Request School list to server
         initList();
 
         // Set Text changing listener of Search EditText
@@ -55,7 +56,7 @@ public class ListFragment extends BaseFragment {
     protected void initList() {
         SchoolRVAdapter.ItemListener listener = (SchoolRVAdapter.ItemListener)getActivity();
         // Init RecyclerView adapter
-        rvAdapter = new SchoolRVAdapter(mViewModel, this, listener);
+        SchoolRVAdapter rvAdapter = new SchoolRVAdapter(mViewModel, this, listener);
         mBinding.rvSchool.setAdapter( rvAdapter );
         mBinding.rvSchool.setLayoutManager(new LinearLayoutManager(getContext(),
                 LinearLayoutManager.VERTICAL, false));

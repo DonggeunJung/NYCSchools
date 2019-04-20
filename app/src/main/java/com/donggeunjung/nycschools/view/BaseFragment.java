@@ -9,14 +9,12 @@ import com.donggeunjung.nycschools.App;
 import com.donggeunjung.nycschools.viewmodel.DataViewModel;
 
 public class BaseFragment extends Fragment {
-    App mApp;
     DataViewModel mViewModel;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mApp = (App)getActivity().getApplication();
-        mViewModel = mApp.getViewModel(getActivity());
+        mViewModel = App.getViewModel(getActivity());
     }
 
 }
