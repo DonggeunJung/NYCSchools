@@ -14,7 +14,7 @@
   Super class of activitys
 
 # /java/<packagename>/view/MainActivity.java : 
-  Main activity class. Load 2 fragments
+  Main activity class.
 
 # /java/<packagename>/view/BodyFragment.java : 
   Detail infomation fragment source file

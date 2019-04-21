@@ -34,13 +34,11 @@ public class SchoolRVAdapter extends RecyclerView.Adapter<SchoolRVAdapter.ViewHo
     }
 
     // Constructor
-    public SchoolRVAdapter(DataViewModel viewModel, Fragment parent,
-                           ItemListener listener) {
-
+    public SchoolRVAdapter(DataViewModel viewModel, Fragment parent) {
         // Save ViewModel, event listener, fragment objects to member variable
         this.mViewModel = viewModel;
         this.mParent = parent;
-        this.mListener = listener;
+        this.mListener = (ItemListener)parent;
         mAdapter = this;
 
         // make School simple data list Observer object
@@ -107,5 +105,4 @@ public class SchoolRVAdapter extends RecyclerView.Adapter<SchoolRVAdapter.ViewHo
             super(itemView);
         }
     }
-
 }
