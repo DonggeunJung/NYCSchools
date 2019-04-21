@@ -20,8 +20,7 @@ import java.util.ArrayList;
  * Author : DONGGEUN JUNG (Dennis)
  * Date : Apr.16.2019
  */
-public class ListFragment extends BaseFragment
-        implements SchoolRVAdapter.ItemListener {
+public class ListFragment extends BaseFragment {
     FragmentListBinding mBinding;
     boolean mMultiPanel = false;
 
@@ -69,6 +68,23 @@ public class ListFragment extends BaseFragment
                 LinearLayoutManager.VERTICAL, false));
         // Show Item Divider on RecyclerView
         mBinding.rvSchool.addItemDecoration(new DividerItemDecoration(getContext(), 1));
+        rvAdapter.setOnItemListener(pos -> onSchoolSelected(pos));
+    }
+
+    // School RecyclerView item selection event
+    public void onSchoolSelected(int position) {
+        // When single panel mode, switch to 2nd fragment
+        if( mMultiPanel == false )
+            switch2BodyFragment();
+
+        // Get School simple data list
+        ArrayList<SchoolSimple> schoolSimples = mViewModel.getListSchools().getValue();
+        if( schoolSimples == null || schoolSimples.size() <= position )
+            return;
+        // Get school simple data from ViewModel
+        SchoolSimple schoolSimple = schoolSimples.get(position);
+        // Request school score & datail data to server
+        mViewModel.reqSchoolScore(schoolSimple);
     }
 
     // Text changing listener of Search EditText
@@ -92,22 +108,6 @@ public class ListFragment extends BaseFragment
         @Override
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
     };
-
-    // School RecyclerView item selection event
-    public void onSchoolSelected(int position) {
-        // When single panel mode, switch to 2nd fragment
-        if( mMultiPanel == false )
-            switch2BodyFragment();
-
-        // Get School simple data list
-        ArrayList<SchoolSimple> schoolSimples = mViewModel.getListSchools().getValue();
-        if( schoolSimples == null || schoolSimples.size() <= position )
-            return;
-        // Get school simple data from ViewModel
-        SchoolSimple schoolSimple = schoolSimples.get(position);
-        // Request school score & datail data to server
-        mViewModel.reqSchoolScore(schoolSimple);
-    }
 
     // Switch Body fragment
     private void switch2BodyFragment() {

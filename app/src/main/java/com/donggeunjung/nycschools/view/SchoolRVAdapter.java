@@ -24,21 +24,24 @@ import java.util.ArrayList;
  */
 public class SchoolRVAdapter extends RecyclerView.Adapter<SchoolRVAdapter.ViewHolder> {
     private DataViewModel mViewModel;
-    ItemListener mListener;
+    OnItemListener mListener;
     Fragment mParent;
     RecyclerView.Adapter<SchoolRVAdapter.ViewHolder> mAdapter;
 
     // Item selection event listener interface
-    public interface ItemListener {
+    public interface OnItemListener {
         public void onSchoolSelected(int position);
+    }
+
+    // Set Item event listener
+    public void setOnItemListener(OnItemListener listener) {
+        this.mListener = listener;
     }
 
     // Constructor
     public SchoolRVAdapter(DataViewModel viewModel, Fragment parent) {
-        // Save ViewModel, event listener, fragment objects to member variable
         this.mViewModel = viewModel;
         this.mParent = parent;
-        this.mListener = (ItemListener)parent;
         mAdapter = this;
 
         // make School simple data list Observer object
