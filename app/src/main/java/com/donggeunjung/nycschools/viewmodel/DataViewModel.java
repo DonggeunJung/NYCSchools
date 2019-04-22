@@ -164,6 +164,18 @@ public class DataViewModel extends ViewModel {
     }
 
     // Request particular school detail information to server.
+    public void reqSchoolScore(int schoolIndex) {
+        // Get School simple data list
+        ArrayList<SchoolSimple> schoolSimples = getListSchools().getValue();
+        if( schoolSimples == null || schoolSimples.size() <= schoolIndex )
+            return;
+        // Get school simple data from ViewModel
+        SchoolSimple schoolSimple = schoolSimples.get(schoolIndex);
+        // Request school score & datail data to server
+        reqSchoolScore(schoolSimple);
+    }
+
+    // Request particular school detail information to server.
     public void reqSchoolScore(SchoolSimple schoolSimple) {
         // Set received school simple data to ViewModel
         getSchoolSimple().setValue(schoolSimple);
@@ -173,8 +185,11 @@ public class DataViewModel extends ViewModel {
         getSchoolDetail(schoolSimple.getDbn());
     }
 
-    // Search particular word in Name of School list
-    public void searchSchoolName(String strSearch) {
+    // Text changing listener of Search EditText
+    public void onTextChanged(CharSequence s, int start, int before, int count) {
+        String strSearch = s.toString();
+        if( strSearch.length() < 2 )
+            return;
         ArrayList<SchoolSimple> listSchools = getSearchedSchoolList(strSearch);
         getListSchools().setValue(listSchools);
     }

@@ -4,17 +4,12 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import com.donggeunjung.nycschools.model.SchoolSimple;
 import com.donggeunjung.nycschools.R;
 import com.donggeunjung.nycschools.databinding.FragmentListBinding;
 
-import java.util.ArrayList;
 /*
  * ListFragment.java : School list fragment source file
  * Author : DONGGEUN JUNG (Dennis)
@@ -34,11 +29,10 @@ public class ListFragment extends BaseFragment {
         mBinding = DataBindingUtil.inflate(
                 inflater, R.layout.fragment_list, container, false);
         mBinding.setLifecycleOwner(this);
+        mBinding.setViewModel(mViewModel);
         // Init RecyclerView adapter & Request School list to server
         initList();
 
-        // Set Text changing listener of Search EditText
-        mBinding.etSearch.addTextChangedListener(mSearchTextWatcher);
         return mBinding.getRoot();
     }
 
@@ -77,37 +71,9 @@ public class ListFragment extends BaseFragment {
         if( mMultiPanel == false )
             switch2BodyFragment();
 
-        // Get School simple data list
-        ArrayList<SchoolSimple> schoolSimples = mViewModel.getListSchools().getValue();
-        if( schoolSimples == null || schoolSimples.size() <= position )
-            return;
-        // Get school simple data from ViewModel
-        SchoolSimple schoolSimple = schoolSimples.get(position);
         // Request school score & datail data to server
-        mViewModel.reqSchoolScore(schoolSimple);
+        mViewModel.reqSchoolScore(position);
     }
-
-    // Text changing listener of Search EditText
-    TextWatcher mSearchTextWatcher = new TextWatcher() {
-        // When input text changing
-        @Override
-        public void onTextChanged(CharSequence s, int start, int before, int count) {
-            // Get search word from EditText
-            String strSearch = mBinding.etSearch.getText().toString();
-            // Search in school name of Total school list
-            if( mViewModel != null ) {
-                mViewModel.searchSchoolName(strSearch);
-            }
-        }
-
-        // When input text change finished
-        @Override
-        public void afterTextChanged(Editable arg0) {}
-
-        // When input text change started
-        @Override
-        public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-    };
 
     // Switch Body fragment
     private void switch2BodyFragment() {
