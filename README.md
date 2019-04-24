@@ -29,7 +29,8 @@
 2. DataBinding
 3. LiveData
 4. RecyclerView
-5. Dagger
+5. Fragment
+6. Dagger
 
 
 < Additional Infomation >
