@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
     <data>
         <variable name="index" type="int"/>
+        <variable name="listFragment" type="com.donggeunjung.nycschools.view.ListFragment"/>
         <variable name="viewModel" type="com.donggeunjung.nycschools.viewmodel.DataViewModel"/>
     </data>
 
@@ -13,6 +14,7 @@
         android:paddingLeft="8dip"
         android:paddingRight="8dip"
         android:background="#888"
+        android:onClick="@{() -> listFragment.onSchoolSelected(index)}"
         android:tag="@{Integer.toString(index)}">
 
         <TextView

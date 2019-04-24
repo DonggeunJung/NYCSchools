@@ -24,19 +24,8 @@ import java.util.ArrayList;
  */
 public class SchoolRVAdapter extends RecyclerView.Adapter<SchoolRVAdapter.ViewHolder> {
     private DataViewModel mViewModel;
-    OnItemListener mListener;
     Fragment mParent;
     RecyclerView.Adapter<SchoolRVAdapter.ViewHolder> mAdapter;
-
-    // Item selection event listener interface
-    public interface OnItemListener {
-        public void onSchoolSelected(int position);
-    }
-
-    // Set Item event listener
-    public void setOnItemListener(OnItemListener listener) {
-        this.mListener = listener;
-    }
 
     // Constructor
     public SchoolRVAdapter(DataViewModel viewModel, Fragment parent) {
@@ -67,18 +56,13 @@ public class SchoolRVAdapter extends RecyclerView.Adapter<SchoolRVAdapter.ViewHo
         binding.setLifecycleOwner(mParent);
         // Set ViewModel object to binding object as a variable
         binding.setViewModel(mViewModel);
+        binding.setListFragment((ListFragment)mParent);
 
         // Make ViewHolder object
         View view = binding.getRoot();
         SchoolRVAdapter.ViewHolder vh = new SchoolRVAdapter.ViewHolder(view);
         // Set binding object to ViewHolder object
         vh.binding = binding;
-        // Set click event listener to ViewHolder object
-        vh.itemView.setOnClickListener(v -> {
-            if( mListener == null ) return;
-            int index = Integer.parseInt((String)v.getTag());
-            mListener.onSchoolSelected(index);
-        });
         return vh;
     }
 

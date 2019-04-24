@@ -62,7 +62,6 @@ public class ListFragment extends BaseFragment {
                 LinearLayoutManager.VERTICAL, false));
         // Show Item Divider on RecyclerView
         mBinding.rvSchool.addItemDecoration(new DividerItemDecoration(getContext(), 1));
-        rvAdapter.setOnItemListener(pos -> onSchoolSelected(pos));
     }
 
     // School RecyclerView item selection event
