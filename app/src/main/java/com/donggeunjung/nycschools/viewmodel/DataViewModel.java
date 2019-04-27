@@ -79,7 +79,7 @@ public class DataViewModel extends ViewModel {
     //===============================================
 
     // Request school data list to server
-    public void getSchoolList() {
+    public void reqSchoolList() {
         Call<ArrayList<SchoolSimple>> call = mApi.getSchoolList();
         call.enqueue(new Callback<ArrayList<SchoolSimple>>() {
 
@@ -108,7 +108,7 @@ public class DataViewModel extends ViewModel {
     }
 
     // Request school data to server
-    public void getSchoolDetail(String dbn) {
+    public void reqSchoolDetail(String dbn) {
         Call<ArrayList<SchoolDetail>> call = mApi.getSchoolDetail(dbn);
         call.enqueue(new Callback<ArrayList<SchoolDetail>>() {
 
@@ -136,7 +136,7 @@ public class DataViewModel extends ViewModel {
     }
 
     // Request SAT score data to server
-    public void getSchoolScore(String dbn) {
+    public void reqSchoolScore(String dbn) {
         Call<ArrayList<SchoolScore>> call = mApi.getSchoolScore(dbn);
         call.enqueue(new Callback<ArrayList<SchoolScore>>() {
 
@@ -180,9 +180,9 @@ public class DataViewModel extends ViewModel {
         // Set received school simple data to ViewModel
         getSchoolSimple().setValue(schoolSimple);
         // Request particular school SAT score information to server.
-        getSchoolScore(schoolSimple.getDbn());
+        reqSchoolScore(schoolSimple.getDbn());
         // Request particular school detail information to server.
-        getSchoolDetail(schoolSimple.getDbn());
+        reqSchoolDetail(schoolSimple.getDbn());
     }
 
     // Text changing listener of Search EditText

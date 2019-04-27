@@ -16,7 +16,6 @@ import com.donggeunjung.nycschools.databinding.FragmentListBinding;
  * Date : Apr.16.2019
  */
 public class ListFragment extends BaseFragment {
-    FragmentListBinding mBinding;
     boolean mMultiPanel = false;
 
     // When Fragment view is created, load layout file
@@ -24,16 +23,16 @@ public class ListFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup
             container, Bundle savedInstanceState) {
         // Request School list to server
-        mViewModel.getSchoolList();
+        mViewModel.reqSchoolList();
         // Save self fragment object as a member variable
-        mBinding = DataBindingUtil.inflate(
+        FragmentListBinding binding = DataBindingUtil.inflate(
                 inflater, R.layout.fragment_list, container, false);
-        mBinding.setLifecycleOwner(this);
-        mBinding.setViewModel(mViewModel);
+        binding.setLifecycleOwner(this);
+        binding.setViewModel(mViewModel);
         // Init RecyclerView adapter & Request School list to server
-        initList();
+        initList(binding);
 
-        return mBinding.getRoot();
+        return binding.getRoot();
     }
 
     @Override
@@ -54,14 +53,14 @@ public class ListFragment extends BaseFragment {
     }
 
     // Init RecyclerView adapter & Request School list to server
-    protected void initList() {
+    protected void initList(FragmentListBinding binding) {
         // Init RecyclerView adapter
         SchoolRVAdapter rvAdapter = new SchoolRVAdapter(mViewModel, this);
-        mBinding.rvSchool.setAdapter( rvAdapter );
-        mBinding.rvSchool.setLayoutManager(new LinearLayoutManager(getContext(),
+        binding.rvSchool.setAdapter( rvAdapter );
+        binding.rvSchool.setLayoutManager(new LinearLayoutManager(getContext(),
                 LinearLayoutManager.VERTICAL, false));
         // Show Item Divider on RecyclerView
-        mBinding.rvSchool.addItemDecoration(new DividerItemDecoration(getContext(), 1));
+        binding.rvSchool.addItemDecoration(new DividerItemDecoration(getContext(), 1));
     }
 
     // School RecyclerView item selection event
